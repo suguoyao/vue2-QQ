@@ -19,6 +19,13 @@
 
 ### 功能
 
+## 目前实现
+
+**消息页列表模板**
+
+![消息页列表模板](./static/message.png)
+
+
 ## Build Setup
 
 ``` bash
