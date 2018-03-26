@@ -31,7 +31,6 @@
       }
     },
     created() {
-      this.activeTab = this.$route.meta.name;
     }
   }
 </script>
