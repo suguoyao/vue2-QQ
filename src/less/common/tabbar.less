@@ -1,0 +1,25 @@
+@import "../variable.less";
+
+.mint-tabbar {
+  height: 50px;
+  background-color: #fff;
+
+  .mint-tab-item {
+    &.is-selected {
+      background-color: transparent;
+
+      .mint-tab-item-icon, .mint-tab-item-label {
+        color: @tabbar-font-color-active;
+      }
+    }
+  }
+
+  .mint-tab-item-icon {
+    color: @tabbar-font-color;
+  }
+
+  .mint-tab-item-label {
+    font-size: 12px;
+    color: @tabbar-font-color;
+  }
+}

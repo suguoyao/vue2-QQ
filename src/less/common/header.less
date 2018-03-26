@@ -1,0 +1,45 @@
+@import "../variable.less";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @header-height;
+  //background-color: #5d99f9;
+  background-image: linear-gradient(90deg, #5D99F9 0%, #61B9F9 100%);
+  z-index: 100;
+
+  .avatar {
+    position: absolute;
+    top: 4px;
+    left: 12px;
+    width: 37px;
+    height: 37px;
+    border-radius: 100%;
+    display: inline-block;
+  }
+
+  .title {
+    position: absolute;
+    width: auto;
+    height: @header-height;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: @header-height;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    color: #fff;
+    font-weight: 300;
+  }
+
+  .btn-right {
+    position: absolute;
+    right: 12px;
+    font-size: 16px;
+    line-height: @header-height;
+    color: #fff;
+    font-weight: 300;
+  }
+}
