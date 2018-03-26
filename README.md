@@ -18,3 +18,15 @@
 - [ ]  动态页
 
 ### 功能
+
+## Build Setup
+
+``` bash
+# 安装
+npm install
+
+# 运行
+npm run dev
+
+# 发布
+npm run build
