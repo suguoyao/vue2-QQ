@@ -3,7 +3,7 @@
     <img class="avatar" src="@/assets/avatar.jpg" alt="">
     <div class="title">{{this.$route.meta.title}}</div>
     <div class="btn-right">
-      添加
+      <icon v-show="this.$route.meta.name==='message'" name="plus"></icon>
     </div>
   </div>
 </template>

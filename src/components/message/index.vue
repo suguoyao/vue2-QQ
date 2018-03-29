@@ -8,12 +8,15 @@
     </div>
 
     <div class="msg-list">
-      <message-item v-for="i in 10" :key="i"></message-item>
+      <message-item v-for="item in msgList" :key="item.id" :item="item" @settop="settopHandler"
+                    @delete="deleteHandler"></message-item>
     </div>
   </div>
 </template>
 <script>
   import MessageItem from '@/components/message/MsgItem'
+
+  import {mapState, mapMutations} from 'vuex'
 
   export default {
     data() {
@@ -23,6 +26,18 @@
     },
     components: {
       MessageItem
+    },
+    computed: {
+      ...mapState('message', ['msgList'])
+    },
+    methods: {
+      ...mapMutations('message', ['setMsgTop', 'deleteMsg']),
+      settopHandler(id) {
+        this.setMsgTop(id);
+      },
+      deleteHandler(id) {
+        this.deleteMsg(id);
+      }
     }
   }
 </script>
