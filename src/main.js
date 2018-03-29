@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import store from './vuex'
 import router from './router'
 
 import '@/less/index.less'
@@ -23,6 +24,7 @@ Vue.component(Search.name, Search);
 // awesome icon
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+
 Vue.component('icon', Icon)
 
 Vue.config.productionTip = false
@@ -35,6 +37,7 @@ router.beforeEach((to, from, next) => {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: {App},
   template: '<App/>'
