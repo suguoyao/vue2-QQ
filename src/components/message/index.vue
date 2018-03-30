@@ -8,15 +8,18 @@
     </div>
 
     <div class="msg-list">
-      <message-item v-for="item in msgList" :key="item.id" :item="item" @settop="settopHandler"
+      <message-item v-for="item in lastTimeFilter" :key="item.id" :item="item" @settop="settopHandler"
                     @delete="deleteHandler"></message-item>
     </div>
+
+    <!--添加弹窗-->
+
   </div>
 </template>
 <script>
   import MessageItem from '@/components/message/MsgItem'
 
-  import {mapState, mapMutations} from 'vuex'
+  import {mapState, mapGetters, mapMutations} from 'vuex'
 
   export default {
     data() {
@@ -28,12 +31,19 @@
       MessageItem
     },
     computed: {
-      ...mapState('message', ['msgList'])
+      // ...mapState('message', ['msgList']),
+      ...mapGetters('message', ['lastTimeFilter'])
     },
     methods: {
-      ...mapMutations('message', ['setMsgTop', 'deleteMsg']),
-      settopHandler(id) {
-        this.setMsgTop(id);
+      ...mapMutations('message', ['setMsgTop', 'cancelMsgTop', 'deleteMsg']),
+      settopHandler(id, isTop) {
+        if (isTop) {
+          // 设置置顶
+          this.setMsgTop(id);
+        } else {
+          // 取消置顶
+          this.cancelMsgTop(id);
+        }
       },
       deleteHandler(id) {
         this.deleteMsg(id);

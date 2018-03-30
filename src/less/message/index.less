@@ -152,16 +152,16 @@
       height: 100%;
       z-index: 1;
 
-      .fixtop {
+      .fixtop, .delete {
         .swiper-btn-right;
-        width: 66px;
+      }
+
+      .fixtop {
         background-color: #c7c7cb;
         right: 66px;
       }
 
       .delete {
-        .swiper-btn-right;
-        width: 66px;
         background-color: #eb4e3d;
       }
     }
@@ -170,6 +170,7 @@
 
 .swiper-btn-right() {
   height: 100%;
+  padding: 0 15px;
   color: #fff;
   font-size: 18px;
   font-weight: 300;

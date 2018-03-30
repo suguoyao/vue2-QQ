@@ -8,7 +8,7 @@ const state = {
       name: 'Leo',
       avatar: '',
       messages: [
-        {id: 1, message: '最近过得好吗？', time: '2018-03-28 22:35'}
+        {id: 1, message: '最近过得好吗？', time: '2018-03-28 12:35'}
       ],
     },
     {
@@ -16,7 +16,7 @@ const state = {
       name: 'Sugars',
       avatar: '',
       messages: [
-        {id: 1, message: '在吗？', time: '2018-03-28 12:05'}
+        {id: 1, message: '在吗？', time: '2018-03-28 14:05'}
       ],
     },
     {
@@ -32,7 +32,7 @@ const state = {
       name: 'Tom',
       avatar: '',
       messages: [
-        {id: 1, message: '你好啊', time: '2018-03-28 10:18'}
+        {id: 1, message: '你好啊', time: '2018-03-28 21:18'}
       ],
     },
     {

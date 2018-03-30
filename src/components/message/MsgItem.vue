@@ -7,7 +7,8 @@
       <div class="msg-item-content">
         <div class="top-row">
           <div class="target-name">{{item.name}}</div>
-          <div class="msg-time">{{getLastMessageByFid(item.fid).time.split(' ')[1]}}</div>
+          <!--<div class="msg-time">{{getLastMessageByFid(item.fid).time.split(' ')[1]}}</div>-->
+          <div class="msg-time">{{item.lastContact.split(' ')[1]}}</div>
         </div>
         <div class="bottom-row">
           <p class="msg-content">{{getLastMessageByFid(item.fid).message}}</p>
@@ -16,7 +17,7 @@
       </div>
     </div>
 
-    <div class="btn-group">
+    <div class="btn-group" ref="btns">
       <div class="fixtop" @click="settop">{{!item.isTop?'置顶':'取消置顶'}}</div>
       <div class="delete" @click="del">删除</div>
     </div>
@@ -35,6 +36,7 @@
     data() {
       return {
         right: 0,
+        btnsWidth: 0,
         isSwipe: false
       }
     },
@@ -43,8 +45,18 @@
     },
     methods: {
       settop() {
-        this.$emit('settop', this.item.id);
+        let isTop = this.item.isTop;
+        if (!isTop) {
+          // 触发置顶
+          this.$emit('settop', this.item.id, true);
+        } else {
+          // 触发取消置顶
+          this.$emit('settop', this.item.id, false);
+        }
         this.right = 0;
+        this.$nextTick(() => {
+          this.btnsWidth = this.$refs.btns.offsetWidth;
+        });
       },
       del() {
         this.$emit('delete', this.item.id);
@@ -54,7 +66,10 @@
     mounted() {
       let x, y, X, Y, swipeX, swipeY, element = this.$refs.swiper;
 
+      this.btnsWidth = this.$refs.btns.offsetWidth;
+
       element.addEventListener('touchstart', e => {
+        e.stopPropagation();
         x = e.changedTouches[0].pageX;
         y = e.changedTouches[0].pageY;
         X = null;
@@ -70,7 +85,7 @@
         let offsetX = parseInt(Math.abs(X - x));
         let offsetY = parseInt(Math.abs(Y - y));
 
-        if (swipeX && offsetX - offsetY > 0 && offsetX <= 66 * 2) {
+        if (swipeX && offsetX - offsetY > 0 && offsetX <= this.btnsWidth) {
           e.stopPropagation();
 
           //左滑
@@ -90,8 +105,8 @@
       element.addEventListener('touchend', e => {
         e.preventDefault();
         if (!this.isSwipe) {
-          if (X && x - X >= 66) {
-            this.right = 66 * 2;
+          if (X && x - X >= this.btnsWidth / 2) {
+            this.right = this.btnsWidth;
             this.isSwipe = true;
           } else {
             this.right = 0;
