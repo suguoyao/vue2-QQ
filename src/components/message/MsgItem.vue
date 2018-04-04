@@ -1,24 +1,23 @@
 <template>
   <div class="msg-item">
-    <div class="swiper-item" :class="{top: item.isTop}" ref="swiper" :style="{right:right+'px'}">
+    <div class="swiper-item" :class="{top: item.messages.isTop}" ref="swiper" :style="{right:right+'px'}">
       <div class="msg-item-left">
         <img class="avatar" src="@/assets/avatar.jpg" alt="">
       </div>
       <div class="msg-item-content">
         <div class="top-row">
           <div class="target-name">{{item.name}}</div>
-          <!--<div class="msg-time">{{getLastMessageByFid(item.fid).time.split(' ')[1]}}</div>-->
-          <div class="msg-time">{{item.lastContact.split(' ')[1]}}</div>
+          <div class="msg-time">{{item.messages.lastContact.split(' ')[1]}}</div>
         </div>
         <div class="bottom-row">
-          <p class="msg-content">{{getLastMessageByFid(item.fid).message}}</p>
-          <span v-if="item.unread>0" class="unread-count">{{item.unread}}</span>
+          <p class="msg-content">{{getLastMessage(item.id).message}}</p>
+          <span v-if="item.messages.unread>0" class="unread-count">{{item.messages.unread}}</span>
         </div>
       </div>
     </div>
 
     <div class="btn-group" ref="btns">
-      <div class="fixtop" @click="settop">{{!item.isTop?'置顶':'取消置顶'}}</div>
+      <div class="fixtop" @click="settop">{{!item.messages.isTop?'置顶':'取消置顶'}}</div>
       <div class="delete" @click="del">删除</div>
     </div>
   </div>
@@ -41,17 +40,14 @@
       }
     },
     computed: {
-      ...mapGetters('contact', ['getLastMessageByFid'])
+      ...mapGetters('contact', ['getLastMessage'])
     },
     methods: {
       settop() {
         let isTop = this.item.isTop;
         if (!isTop) {
           // 触发置顶
-          this.$emit('settop', this.item.id, true);
-        } else {
-          // 触发取消置顶
-          this.$emit('settop', this.item.id, false);
+          this.$emit('settop', this.item.id, !this.item.messages.isTop);
         }
         this.right = 0;
         this.$nextTick(() => {

@@ -1,14 +1,9 @@
 <template>
   <div class="main">
-    <div class="search-bar">
-      <div class="search-bar-inner">
-        <icon name="search" scale=".8"></icon>
-        <div class="search-input-box">搜索</div>
-      </div>
-    </div>
+    <search-temp></search-temp>
 
     <div class="msg-list">
-      <message-item v-for="item in lastTimeFilter" :key="item.id" :item="item" @settop="settopHandler"
+      <message-item v-for="item in recentFriendsFilter" :key="item.id" :item="item" @settop="settopHandler"
                     @delete="deleteHandler"></message-item>
     </div>
 
@@ -17,22 +12,21 @@
   </div>
 </template>
 <script>
+  import SearchTemp from '@/components/common/SearchTemp'
   import MessageItem from '@/components/message/MsgItem'
 
   import {mapState, mapGetters, mapMutations} from 'vuex'
 
   export default {
     data() {
-      return {
-        searchMsg: ''
-      }
+      return {}
     },
     components: {
+      SearchTemp,
       MessageItem
     },
     computed: {
-      // ...mapState('message', ['msgList']),
-      ...mapGetters('message', ['lastTimeFilter'])
+      ...mapGetters('contact', ['recentFriendsFilter'])
     },
     methods: {
       ...mapMutations('message', ['setMsgTop', 'cancelMsgTop', 'deleteMsg']),

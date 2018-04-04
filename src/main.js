@@ -13,6 +13,8 @@ import {
   Cell, Checklist,
   Tabbar, TabItem,
   Search,
+  Navbar,
+  TabContainer, TabContainerItem
 } from 'mint-ui';
 
 Vue.component(Cell.name, Cell);
@@ -20,6 +22,9 @@ Vue.component(Checklist.name, Checklist);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
 Vue.component(Search.name, Search);
+Vue.component(Navbar.name, Navbar);
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
 
 // awesome icon
 import 'vue-awesome/icons'

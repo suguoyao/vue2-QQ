@@ -18,10 +18,33 @@ p {
 
 #app {
   height: 100%;
+  background-color: #f7f7f9;
 }
 
 .main {
   padding-top: @header-height;
   padding-bottom: @tabbar-height;
   overflow: scroll;
+}
+
+.q-cells {
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 10px;
+  overflow: hidden;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+    z-index: 2;
+  }
+
 }
