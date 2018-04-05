@@ -19,10 +19,10 @@
     <!-- tab-container -->
     <mt-tab-container v-model="selectdTab" swipeable>
       <mt-tab-container-item id="1">
-        <mt-cell v-for="n in 10" :title="'content ' + n"/>
+        <mt-cell v-for="n in 10" :key="n" :title="'content ' + n"/>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 6" :title="'content ' + n"/>
+        <mt-cell v-for="n in 6" :key="n" :title="'content ' + n"/>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
