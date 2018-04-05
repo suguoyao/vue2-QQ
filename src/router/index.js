@@ -8,7 +8,7 @@ import Movement from '@/components/movement/index'
 Vue.use(Router)
 
 export default new Router({
-  mode: process.env.NODE_ENV === 'development' ? 'history' : 'hash',
+  mode: 'history',
   routes: [
     {
       path: '/',
