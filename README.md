@@ -39,7 +39,7 @@
 
 **消息页列表模板**
 
-![消息页列表模板](./static/message.jpg)
+![消息页列表模板](./static/message.gif)
 
 
 ## Build Setup
