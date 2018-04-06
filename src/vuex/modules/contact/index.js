@@ -9,6 +9,7 @@ const state = {
       id: 1,
       name: 'Leo',
       avatar: '',
+      sign: '我们准备着深深地领受，那些意想不到的奇迹',
       messages: {
         content: [
           {id: 1, message: '最近过得好吗？', time: '2018-03-28 12:35'}
@@ -16,12 +17,14 @@ const state = {
         lastContact: '2018-03-28 12:35',
         unread: 0,
         isTop: false
-      }
+      },
+      group: 'g1'
     },
     {
       id: 2,
       name: 'Sugars',
       avatar: '',
+      sign: '在漫长的岁月里忽然有，彗星的出现，狂风乍起',
       messages: {
         content: [
           {id: 1, message: '在吗？', time: '2018-03-28 14:05'}
@@ -29,12 +32,14 @@ const state = {
         lastContact: '2018-03-28 14:05',
         unread: 3,
         isTop: false
-      }
+      },
+      group: 'g1'
     },
     {
       id: 3,
       name: 'Jack',
       avatar: '',
+      sign: '毫无权势，一些知识，一些智慧，以及尽可能多的趣味。',
       messages: {
         content: [
           {id: 1, message: 'hello world', time: '2018-03-28 10:19'},
@@ -43,12 +48,14 @@ const state = {
         lastContact: '2018-03-28 10:19',
         unread: 0,
         isTop: false
-      }
+      },
+      group: 'g3'
     },
     {
       id: 4,
       name: 'Tom',
       avatar: '',
+      sign: '走在一条开满了桃花的路上，云蒸霞蔚，前途似锦。',
       messages: {
         content: [
           {id: 1, message: '你好啊', time: '2018-03-28 21:18'},
@@ -57,12 +64,14 @@ const state = {
         lastContact: '2018-03-28 21:18',
         unread: 8,
         isTop: true
-      }
+      },
+      group: 'g2'
     },
     {
       id: 5,
       name: 'Peter',
       avatar: '',
+      sign: '你懂的越多，懂你的人就越少',
       messages: {
         content: [
           {id: 1, message: '这是一个Vue2仿QQ项目？', time: '2018-03-28 07:35'}
@@ -70,9 +79,38 @@ const state = {
         lastContact: null,
         unread: 0,
         isTop: false
-      }
+      },
+      group: 'g1'
     },
-  ]
+  ],
+  groups: {
+    // 好友分组
+    friends: [
+      {
+        id: 'g1',
+        groupName: '我的家人'
+      },
+      {
+        id: 'g2',
+        groupName: '老同学'
+      },
+      {
+        id: 'g3',
+        groupName: '我的好朋友'
+      }
+    ],
+    // 群分组
+    teams: [
+      {
+        id: 't1',
+        groupName: '班级群'
+      },
+      {
+        id: 't2',
+        groupName: '开心一家人'
+      }
+    ]
+  }
 };
 
 const mutations = {};
@@ -97,11 +135,9 @@ const getters = {
       return transTime(_a.lastContact) < transTime(_b.lastContact)
     })
   },
-  // getAllMessageByFid: ({state}, fid) => {
-  //   return state.friends.find(friend => {
-  //     return friend.id === fid ? friend.messages : []
-  //   })
-  // }
+  getGroupSize: (state) => (groupId) => {
+    return state.friends.filter(friend => friend.group === groupId)
+  }
 };
 
 

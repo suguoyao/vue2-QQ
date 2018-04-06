@@ -19,10 +19,10 @@
     <!-- tab-container -->
     <mt-tab-container v-model="selectdTab" swipeable>
       <mt-tab-container-item id="1">
-        <mt-cell v-for="n in 10" :key="n" :title="'content ' + n"/>
+        <group-item v-for="g in groups.friends" :key="g.id" :group="g"></group-item>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 6" :key="n" :title="'content ' + n"/>
+        <group-item v-for="g in groups.teams" :key="g.id" :group="g"></group-item>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
@@ -30,6 +30,9 @@
 <script>
   import SearchTemp from '@/components/common/SearchTemp'
   import ListItem from '@/components/common/ListItem'
+  import GroupItem from '@/components/contact/GroupItem'
+
+  import {mapState} from 'vuex'
 
   export default {
     data() {
@@ -39,8 +42,12 @@
     },
     components: {
       SearchTemp,
-      ListItem
+      ListItem,
+      GroupItem
     },
+    computed: {
+      ...mapState('contact', ['groups'])
+    }
   }
 </script>
 <style lang="less">
