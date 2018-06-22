@@ -12,7 +12,7 @@
 
 ## 效果预览 
 
-[Demo预览请点击这里](http://suguoyao.com/message) 
+[Demo预览请点击这里](http://suguoyao.com/vue2-QQ/dist/#/message) 
 
 
 （如果是电脑端，请用chrome手机模式预览）
